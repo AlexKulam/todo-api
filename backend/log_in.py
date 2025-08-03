@@ -18,4 +18,4 @@ def login_user(login: str = Form(...), password: str = Form(...), db: Session = 
     user = db.query(User).filter(User.login == login).first()
     if not user or not bcrypt.verify(password, user.password):
         raise HTTPException(status_code=400, detail="Invalid credentials")
-    return {"message": "Login successful"}
+    return {"message": "Login successful", "user_id": user.id}

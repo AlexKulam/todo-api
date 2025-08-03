@@ -13,7 +13,7 @@ class TaskCreate(BaseModel):
 class TaskUpdate(BaseModel):
     title: Optional[str] = None
     description: Optional[str] = None
-    is_completed: bool
+    is_completed: Optional[bool] = None
 
 class TaskOut(BaseModel):
     id: int

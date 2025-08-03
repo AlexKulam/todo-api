@@ -29,3 +29,10 @@ def update_task(task_id: int, task: schemas.TaskUpdate, db: Session = Depends(ge
     if not updated:
         raise HTTPException(status_code=404, detail="Задача не найдена")
     return updated
+
+@router.delete("/tasks/{task_id}", response_model=schemas.TaskOut)
+def delete_task(task_id: int, db: Session = Depends(get_db)):
+    deleted_task = crud.delete_task(db, task_id)
+    if not deleted_task:
+        raise HTTPException(status_code=404, detail="Задача не найдена")
+    return deleted_task
