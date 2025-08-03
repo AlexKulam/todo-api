@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, Depends, Form
 from sqlalchemy.orm import Session
-from backend.database import SessionLocal
-from backend.models import User
+from .database import SessionLocal
+from .models import User
 from passlib.hash import bcrypt
 
 router = APIRouter()

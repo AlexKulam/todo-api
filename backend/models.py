@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
-from database import Base
+from .database import Base
 
 class User(Base):
     __tablename__ = "users"
@@ -9,7 +9,7 @@ class User(Base):
     login = Column(String, unique=True, index=True, nullable=False)
     email = Column(String, unique=True, nullable=False)
     password = Column(String, nullable=False)
-    asks = relationship("Task", back_populates="owner", cascade="all, delete")
+    tasks = relationship("Task", back_populates="owner", cascade="all, delete")
 
 class Task(Base):
     __tablename__ = "tasks"

@@ -15,5 +15,11 @@ class TaskUpdate(BaseModel):
     description: Optional[str] = None
     is_completed: bool
 
+class TaskOut(BaseModel):
+    id: int
+    title: str
+    description: Optional[str]
+    is_completed: bool
+
     class Config:
         orm_mode = True
